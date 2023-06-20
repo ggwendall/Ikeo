@@ -57,6 +57,8 @@ Affichage des produits avec leurs sites de production
 
 ![image](https://github.com/ggwendall/Ikeo/assets/48108275/21793092-196f-4235-9950-6f43bee6a550)
 
+![image](https://github.com/ggwendall/Ikeo/assets/48108275/d038add7-e20d-45b5-b0bc-51ab6aeb9c8f)
+
 Graphique des commandes par produits et Graphique des commandes par clients
 
 Auteurs
