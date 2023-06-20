@@ -22,6 +22,7 @@ try:
     # Load products data
     produits_query = "SELECT * FROM Produits"
     produits_df = execute_query(produits_query)
+    produits_df.rename(columns={"ProduitID": "ProductID"}, inplace=True)
 
     # Load factories data
     usines_query = "SELECT * FROM Usines"
@@ -39,9 +40,21 @@ try:
     st.subheader("Liste des produits avec leurs sites de production")
     st.dataframe(produits_df)
 
-    # Filter by production site
-    selected_site = st.selectbox("Filtrer par site de production", usines_df['Ville'].unique())
-    filtered_produits_df = produits_df[produits_df['Usine'].str.contains(selected_site, case=False)]
+    # Chargement des données des produits depuis la table "Produits"
+    produits_query = "SELECT * FROM Produits"
+    produits_df = execute_query(produits_query)
+    produits_df.rename(columns={"ProduitID": "ProductID"}, inplace=True)
+
+    # Récupération des sites de production uniques
+    sites_de_production = produits_df['Usine'].str.split(',', expand=True).stack().str.strip().unique()
+
+    # Sélection du site de production avec une boîte de sélection
+    selected_site = st.selectbox("Sélectionner un site de production", sites_de_production)
+
+    # Filtrage des données en fonction du site de production sélectionné
+    filtered_produits_df = produits_df[produits_df['Usine'].str.contains(selected_site, case=False, na=False)]
+
+    # Affichage du DataFrame filtré
     st.subheader(f"Produits du site de production : {selected_site}")
     st.dataframe(filtered_produits_df)
 
