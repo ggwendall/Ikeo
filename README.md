@@ -14,7 +14,7 @@ L'objectif de ce projet est de créer une interface utilisateur conviviale pour 
 
 ## Prérequis
 
-- Python 3.7 ou une version ultérieure
+- Python 3.7 ou une version supérieur
 - Les bibliothèques Python : Streamlit, Pandas, Matplotlib et PyMySQL
 - Une base de données MySQL avec les tables suivantes :
   - `Usines` : contient les informations sur les usines de production
